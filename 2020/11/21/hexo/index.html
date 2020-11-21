@@ -407,13 +407,32 @@
         
           <header class="entry-header">
             <h1 class="entry-title">hexo</h1>
-            <p class="entry-census">hojun&nbsp;·&nbsp;2020-11-21&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <p class="entry-census">guowenbo&nbsp;·&nbsp;2020-11-21&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          
+          <h1 id="hexo的命令"><a href="#hexo的命令" class="headerlink" title="hexo的命令"></a>hexo的命令</h1><pre><code class="bash">hexo s #启动hexo
+hexo n #新建博客
+hexo clean #清理
+hexo g  #生成
+hexo d #部署
+</code></pre>
+<h2 id="连接github和hexo"><a href="#连接github和hexo" class="headerlink" title="连接github和hexo"></a>连接github和hexo</h2><p>安装布置包</p>
+<pre><code class="bash">cnpm install --save hexo-deployer-git
+</code></pre>
+<p>2修改blog目录下的config<br>在config里的deployment添加 type：git 和仓库地址和branch类型</p>
+<pre><code class="bash">type: git
+repo: https://github.com/guowenbo1/guowenbo1.github.io
+branch: master
+</code></pre>
+<h1 id="hexo的使用"><a href="#hexo的使用" class="headerlink" title="hexo的使用"></a>hexo的使用</h1><h2 id="自己的使用流程"><a href="#自己的使用流程" class="headerlink" title="自己的使用流程"></a>自己的使用流程</h2><p>​        先用hexo n 新建博客并修改<br>​        依次运行 hexo clean； hexo g； hexo s<br>​        这样本地localhost就会更新<br>​        运行hexo d 使<a href="https://guowenbo1.github.io/更新" target="_blank" rel="noopener">https://guowenbo1.github.io/更新</a><br>​        疑问 ：让github里hexo博客更新的方法是 hexo d？</p>
+<h2 id="遇见的错误及解决方法"><a href="#遇见的错误及解决方法" class="headerlink" title="遇见的错误及解决方法"></a>遇见的错误及解决方法</h2><p>运行hexo d时提示 ERROR Deployer not found: git</p>
+<pre><code class="bash">npm install --save hexo-deployer-git
+</code></pre>
+<p>即可</p>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -441,9 +460,26 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/11/21/命令行的使用/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                命令行的使用</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
         
           
-            <div class="post-nepre full next">
+            <div class="post-nepre half next">
           
             <a href="/2020/11/21/oracle/" rel="next">
               <div class="background">
@@ -477,11 +513,11 @@
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="hojun.cn" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="hojun" height="70" width="70"></a>
+          <a href="" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="guowenbo" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="hojun.cn" itemprop="url" rel="author">hojun</a>
+            <a href="" itemprop="url" rel="author">guowenbo</a>
             </h3>
           </div>
         </div>

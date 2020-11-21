@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-21T09:06:37.886Z</updated>
+  <updated>2020-11-21T09:27:33.133Z</updated>
   <id>/</id>
   
   <author>
@@ -17,13 +17,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>命令行的使用</title>
+    <link href="/2020/11/21/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>/2020/11/21/命令行的使用/</id>
+    <published>2020-11-21T09:25:46.000Z</published>
+    <updated>2020-11-21T09:27:33.133Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Git-CMD-Windows&quot;&gt;&lt;a href=&quot;#Git-CMD-Windows&quot; class=&quot;headerlink&quot; title=&quot;Git CMD(Windows)&quot;&gt;&lt;/a&gt;Git CMD(Windows)&lt;/h2&gt;&lt;pre&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+      <category term="基础" scheme="/categories/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>hexo</title>
     <link href="/2020/11/21/hexo/"/>
     <id>/2020/11/21/hexo/</id>
     <published>2020-11-21T09:06:37.000Z</published>
-    <updated>2020-11-21T09:06:37.886Z</updated>
+    <updated>2020-11-21T09:25:27.947Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;hexo的命令&quot;&gt;&lt;a href=&quot;#hexo的命令&quot; class=&quot;headerlink&quot; title=&quot;hexo的命令&quot;&gt;&lt;/a&gt;hexo的命令&lt;/h1&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;hexo s #启动hexo
+hexo n
+        
+      
     
     </summary>
     
