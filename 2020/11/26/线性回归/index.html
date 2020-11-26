@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">逻辑回归 | guowenbo1</title>
+  <title itemprop="name">线性回归 | guowenbo1</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -406,14 +406,122 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
           <header class="entry-header">
-            <h1 class="entry-title">逻辑回归</h1>
-            <p class="entry-census">hojun&nbsp;·&nbsp;2020-11-26&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <h1 class="entry-title">线性回归</h1>
+            <p class="entry-census">Eric Guo&nbsp;·&nbsp;2020-11-26&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          
+          <p>In this part of this exercise, you will implement linear regression with one variable to predict profits for a food truck. Suppose you are the CEO of a restaurant franchise and are considering different cities for opening a new outlet. The chain already has trucks in various cities and you have data for profits and populations from the cities. You would like to use this data to help you select which city to expand to next.<br>The file ex1data1.txt contains the dataset for our linear regression problem. The first column is the population of a city and the second column is the profit of a food truck in that city. A negative value for profit indicates a loss. </p>
+<hr>
+<pre><code class="python">
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+import numpy as np
+
+
+# MMSE(mean square error)均方误差
+# theat0参数 theat1参数 xList自变量 yList因变量
+def MSE(theat0 ,theat1 ,xList ,yList):
+    sum = 0
+    m = len(xList)
+    for i in range(m):
+        sum += (theat0 + theat1 * xList[i] - yList[i]) ** 2
+    value = sum / ( 2 *m)
+    return round(value ,10)
+
+
+# 梯度下降算法迭代更新theat0和theat1
+def gradient_descent(theat0 ,theat1 ,alpha ,xList ,yList):
+    m = len(xList)
+    sum0 = 0
+    sum1 = 0
+    for i in range(m):
+        sum0 += theat0 +theat1 * xList[i] - yList[i]
+        sum1 += (theat0 +theat1 * xList[i] - yList[i]) * xList[i]
+    theat0 = theat0 - alpha * sum0 / m
+    theat1 = theat1 - alpha * sum1 / m
+    return round(theat0 ,10) ,round(theat1 ,10)
+
+
+
+if __name__ == &quot;__main__&quot;:
+    file_input_address = &quot;chap3/chap3/作业/ex1data1.txt&quot;  # 相对路径
+
+    with open(file_input_address) as fo:
+        b = fo.readlines()  # 返回值为list 每个值由每行构成的字符组成 type(b(0)) = str
+        population = []  # 存储人口的列表
+        profit = []  # 存储利润的列表
+        for i in b:
+            i_array = i.strip(&quot;\n&quot;).split(&quot;,&quot;)  # 去除\n并以，分割字符串
+            population.append(float(i_array[0]))  # 将第一个值赋给population
+            profit.append(float(i_array[1]))  # 将第二个值赋给profit
+            i_array.clear()
+
+    theat0 = 0  # 第一个参数
+    theat1 = 0  # 第二个参数
+    alpha = 0.01  # 学习率
+    epslion = 0.0001  # 最小误差值 当两次迭代的MSE小于此值时停止迭代
+    error0 = 0
+    count = 0
+    error = []
+    while True:
+        count += 1
+        theat0 ,theat1 = gradient_descent(theat0 ,theat1 ,alpha ,population ,profit)
+        error1 = MSE(theat0 ,theat1 ,population ,profit) #计算迭代的误差
+        error.append(error1)
+        if abs(error1 - error0) &lt;=epslion:
+            break
+        else:
+            error0 = error1
+
+    print(&quot;theat0 is&quot; ,theat0 ,&quot; theat1 is&quot; ,theat1)
+    print(&quot;迭代次数为&quot; ,count)
+
+    #转换成nparray才可用sklearn
+    population = np.array(population).reshape(-1,1)
+    profit = np.array(profit).reshape(-1,1)
+    yy = theat0 + theat1*population
+
+    #绘制损失函数的变化
+    plt.plot(error) #x值缺省时默认为len(error)
+    plt.ylabel(&#39;Cost J&#39;)
+    plt.xlabel(&#39;Iterations&#39;);
+    plt.show()
+
+    ## visualizing the data
+    reg = linear_model.LinearRegression()
+    reg.fit(population,profit)
+    predicted = reg.predict(population)
+
+    ## visualizing the data
+    # 绘制散点图 参数：x横轴 y纵轴
+    plt.scatter(population, profit, marker=&#39;x&#39;)
+    plt.plot(population,yy,&#39;r-&#39;,label = &quot;my model&quot;) #我的预测函数
+    plt.plot(population,predicted,&#39;g-&#39;,label = &#39;sklearn model&#39;) #sklearn的预测函数
+
+    # 绘制x轴和y轴坐标
+    plt.xlabel(&quot;population&quot;)
+    plt.ylabel(&quot;profit&quot;)
+
+    # 显示图形
+    plt.show()
+
+</code></pre>
+<pre><code>！[可视化数据](https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/post/python/数据挖掘/6.png)
+</code></pre><ul>
+<li>问题思考<blockquote>
+<p>没有设置检验数据集<br>读入数据的变量为列表，效率不如nparray高</p>
+</blockquote>
+</li>
+<li><p>实验总结 </p>
+<blockquote>
+<p>实现的一元梯度下降算法，并学习了plot函数如何绘制图形。</p>
+</blockquote>
+</li>
+</ul>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -444,7 +552,7 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/11/26/Jsdelivr的使用/" rel="prev">
+            <a href="/2020/11/26/逻辑回归/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -452,7 +560,7 @@
               Previous Post</span>
               <div class="info">
                 <h3>
-                Jsdelivr的使用</h3>
+                逻辑回归</h3>
                 <hr>
               </div>
             </a>
@@ -462,7 +570,7 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/11/26/线性回归/" rel="next">
+            <a href="/2020/11/26/PCA/" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -470,7 +578,7 @@
               Next Post</span>
               <div class="info">
                 <h3>
-                线性回归</h3>
+                PCA</h3>
                 <hr>
               </div>
             </a>
@@ -494,11 +602,11 @@
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="hojun.cn" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="hojun" height="70" width="70"></a>
+          <a href="" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="Eric Guo" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="hojun.cn" itemprop="url" rel="author">hojun</a>
+            <a href="" itemprop="url" rel="author">Eric Guo</a>
             </h3>
           </div>
         </div>
