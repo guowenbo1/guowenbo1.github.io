@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a: 2020 | guowenbo1</title>
+  <title itemprop="name">数据预处理 | guowenbo1</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -394,130 +394,362 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
 <div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
-    </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2020年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      11月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2020/11/26/数据预处理/">
-                          <span style="color:#0bf;">
-                          26日14:15:46</span>
-                          数据预处理
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/11/23/TF-IDF/">
-                          <span style="color:#0bf;">
-                          23日20:12:29</span>
-                          TF-IDF
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/11/21/命令行的使用/">
-                          <span style="color:#0bf;">
-                          21日17:25:46</span>
-                          命令行的使用
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/11/21/hexo/">
-                          <span style="color:#0bf;">
-                          21日17:06:37</span>
-                          hexo
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/11/21/oracle/">
-                          <span style="color:#0bf;">
-                          21日17:06:31</span>
-                          oracle
-                        </a>
-                      </li>
-                      
-              
-              
-              
-              
-              
-                      <li>
-                        <a href="/2020/11/21/hello-world/">
-                          <span style="color:#0bf;">
-                          21日16:24:30</span>
-                          Hello World
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+          <header class="entry-header">
+            <h1 class="entry-title">数据预处理</h1>
+            <p class="entry-census">guowenbo&nbsp;·&nbsp;2020-11-26&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+
+            <hr>
+          </header>
+        
+        <div class="entry-content">
+          <h2 id="实验二、数据预处理"><a href="#实验二、数据预处理" class="headerlink" title="实验二、数据预处理"></a>实验二、数据预处理</h2><h3 id="1：缺失数据填充"><a href="#1：缺失数据填充" class="headerlink" title="1：缺失数据填充"></a>1：缺失数据填充</h3><p>餐饮系统中的销售数据可能会出现缺失，catering_sale_missing.xls为某餐厅一段时间的销量，其中，有部分数据缺失。利用拉格朗日插值对缺失数据进行插补。要求：</p>
+<pre><code>   - 前后取值个数k=3
+- 读出并显示原始数据
+- 插值后的数据另存为missing_data_processing.xls
+- 读出并显示插值后数据
+</code></pre><h3 id="2：相关性分析"><a href="#2：相关性分析" class="headerlink" title="2：相关性分析"></a>2：相关性分析</h3><p>利用missing_data_processing.xls，通过Python中统计函数，分析这些菜品销售之间的相关性。要求：</p>
+<pre><code>- 计算任意两款菜式之间的相关系数
+- 计算“百合酱蒸凤爪”与其他菜式的相关系数
+- 计算“百合酱蒸凤爪”与“翡翠蒸香茜饺”的相关系数
+</code></pre><h3 id="3：数据规范化"><a href="#3：数据规范化" class="headerlink" title="3：数据规范化"></a>3：数据规范化</h3><p>使用python 相关库完成给定数据集的据规范化和转换。要求：</p>
+<pre><code>- 读取normalization_data.xls
+- 最小-最大规范化数据
+- Z-score规范化(零-均值规范化)
+- 小数定标规范化
+- 输出所有规范化结果
+</code></pre><h3 id="4：数据离散化"><a href="#4：数据离散化" class="headerlink" title="4：数据离散化"></a>4：数据离散化</h3><pre><code>- 读取discretization_data.xls，使用padans.cut()对数据进行0-3的离散处理；
+- 处理后的数据保存在data_descret.xls中
+</code></pre><h3 id="5：数据转化"><a href="#5：数据转化" class="headerlink" title="5：数据转化"></a>5：数据转化</h3><pre><code>- 读取sales_data.xls，将字符数据转换成数值型数据，并将转换结果保存为data_tras.xls（data_transfer）
+</code></pre><h3 id="缺失数据补充"><a href="#缺失数据补充" class="headerlink" title="缺失数据补充"></a>缺失数据补充</h3><pre><code class="python">import xlrd
+import pandas as pd
+from scipy.interpolate import lagrange
+import numpy as np
+
+or_file_ad = &quot;catering_sale_missing.xls&quot; #文件地址
+or_file = xlrd.open_workbook(or_file_ad) #打开文件
+sheet1 = or_file.sheet_by_index(0)  #第一个工作表
+org_data = sheet1.col_values(1) #所需要的数据，为第一个工作表的第二列除第一行之外的值
+org_data.remove(&#39;销量&#39;) #移除销量
+out_files = &#39;missing_data_processing.xls&#39;
+
+#作业要求2：读出并显示原始数据
+print(org_data)
+
+#s和n为列向量  k为要参考数据的个数
+def polyinterp_column(s, n, k=3):
+    y = s.iloc[list(range(n-k,n)) + list(range(n + 1, n + 1 + k))]
+    y = y[y.notnull()]
+    return lagrange(y.index,list(y))(n)
+
+#读入数据
+data = pd.read_excel(or_file_ad)
+
+#进行拉格朗日插值法
+for i in data.columns:
+    for j in range(len(data)):
+        if (data[i].isnull())[j]:
+            data.loc[j,i] = polyinterp_column(data[i],j)
+
+# data_vector = np.asarray(org_data)
+# for i in range(len(org_data)):
+#     if (org_data[i]==&#39;&#39;):   #判断是否为空 由于是字符型不能用None
+#         org_data[i] = polyinterp_column(data_vector,i)
+
+#写出数据
+data.to_excel(out_files)
+
+</code></pre>
+<h3 id="数据规范化"><a href="#数据规范化" class="headerlink" title="数据规范化"></a>数据规范化</h3><pre><code class="python">import xlrd
+import numpy as np
+
+file_ad = &quot;normalization_data.xls&quot;  # 文件地址
+file_data = xlrd.open_workbook(file_ad)  # 打开文件
+sheet1 = file_data.sheet_by_index(0)  # 第一个工作表
+all_rows = sheet1.nrows  # 总行数
+all_col = sheet1.ncols  # 总列数
+
+data = []  # 存储数据的列表
+for i in range(all_rows):
+    for k in range(all_col):
+        data.append(sheet1.cell(i, k).value)
+
+
+# # 最小-最大规范化  min当前数据集的最小值 max当前数据集的最大值 values当前要规范的数据
+# 此为0-1规范化 规范化后的数据为0~1
+def min_max(min, max, values):
+    num = values - min
+    dom = max - min
+    data = (num / dom) * (1 - 0) + 0
+    return data
+
+
+# z分数规范化   average为数据集的平均值 std为数据集的标准差 value为当前要规范的数据
+def z_score(average, std, value):
+    data = (value - average) / std
+    return data
+
+
+# 小数定标规范化 j为10为底values绝对值最大的对数
+def dec_norm(j, value):
+    data = value / 10 ** j
+    return data
+
+
+# 最小最大规范化数据
+max1 = max(data)
+min1 = min(data)
+data_minmax_norm = []
+for i in data:
+    data_minmax_norm.append(min_max(min1, max1, i))
+
+print(&quot;最小-最大（0-1)规范化数据为：&quot;, data_minmax_norm)
+
+# z分数规范化
+average1 = np.mean(data)
+std1 = np.std(data, ddof=1)
+data_zscore_norm = []
+for i in data:
+    data_zscore_norm.append((z_score(average1, std1, i)))
+
+print(&quot;z分数规范化数据为：&quot;, data_zscore_norm)
+
+# 小数定标规范化
+# max_abs为绝对值最大的数
+if abs(min1) &gt; abs(max1):
+    max_abs = min1
+else:
+    max_abs = max1
+
+j = np.log10(max_abs)
+data_dec_norm = []
+for i in data:
+    data_dec_norm.append(dec_norm(j, i))
+
+print(&quot;小数定标规范化数据为：&quot;, data_dec_norm)
+</code></pre>
+<h3 id="数据离散化"><a href="#数据离散化" class="headerlink" title="数据离散化"></a>数据离散化</h3><pre><code class="python">import xlrd
+import pandas as pd
+import xlwt
+
+file_ad = &quot;discretization_data.xls&quot;  #文件地址
+file_data = xlrd.open_workbook(file_ad)   #打开文件
+sheet1 = file_data.sheet_by_index(0)   #第一个工作表
+all_rows = sheet1.nrows  #总行数
+all_col = sheet1.ncols   #总列数
+out_files = &#39;data_descret.xls&#39;
+
+data = [] #存储数据的列表
+for i in range(all_rows):
+    for k in range(all_col):
+        data.append(sheet1.cell(i,k).value)
+
+data.remove(&#39;肝气郁结症型系数&#39;) #移除label
+
+#离散化
+descret_data = pd.cut(data,3,labels=False)
+
+#写入xls
+workbook = xlwt.Workbook(encoding =&#39;utf-8&#39;)
+worksheet = workbook.add_sheet(&#39;sheet1&#39;)
+b = 0
+for i in descret_data:
+    worksheet.write(b,0,int(i))
+    b = b + 1
+
+workbook.save(&#39;data_descret.xls&#39;) #保存文件
+</code></pre>
+<h3 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h3><pre><code class="python">import xlrd
+import xlwt
+
+file_ad = &quot;sales_data.xls&quot;  #文件地址
+file_data = xlrd.open_workbook(file_ad)   #打开文件
+sheet1 = file_data.sheet_by_index(0)   #第一个工作表
+all_rows = sheet1.nrows  #总行数 从1开始
+all_col = sheet1.ncols   #总列数 从1开始
+
+
+a = 0
+label = [] #存储第一行的值
+for i in range(all_col):
+    label.append(sheet1.cell(0,i).value)
+
+data = [] #存储数据的列表 不包含第一行及序号列
+for i in range(1,all_rows):   # 1开始是为了去除第一行
+    for k in range(1,all_col):  # 1开始是为了去除序号列
+        if sheet1.cell(i,k).value == &#39;坏&#39; or sheet1.cell(i,k).value == &#39;否&#39; or sheet1.cell(i,k).value == &#39;低&#39;:
+            data.append(0)
+        else:
+            data.append(1)
+
+
+# 创建新的xls表
+workbook = xlwt.Workbook(encoding =&#39;utf-8&#39;)
+worksheet = workbook.add_sheet(&#39;sheet1&#39;)
+
+
+#写入第一行
+b = 0
+for i in label:
+    worksheet.write(0,b,i)
+    b = b + 1
+
+
+#写入序号列
+c = 1
+for i in range((all_rows-1)):
+    worksheet.write(c,0,int(i+1))
+    c = c + 1
+
+#写入转换后的值
+#worksheet.write里的单元格从0开始
+for i in range(2,all_rows + 1):
+    for k in range(2,all_col + 1):
+        x = (i - 2) * (all_col - 1) + (k - 1)
+        worksheet.write((i-1),(k-1),data[x-1])
+
+
+workbook.save(&#39;data_trassfer.xls&#39;) #保存文件
+</code></pre>
+<h3 id="相关性分析"><a href="#相关性分析" class="headerlink" title="相关性分析"></a>相关性分析</h3><pre><code class="python">import xlrd
+
+
+file_ad = &quot;catering_sale_all.xls&quot;  #文件地址
+file_data = xlrd.open_workbook(file_ad)   #打开文件
+sheet1 = file_data.sheet_by_index(0)   #第一个工作表
+all_rows = sheet1.nrows  #总行数
+all_col = sheet1.ncols   #总列数
+
+
+a = 0
+label = [] #存储第一行的值（菜系名字）
+for i in range(1,all_col):
+    label.append(sheet1.cell(0,i).value)
+
+data = [] #存储数据的列表 不包含时间以及菜名
+for i in range(1,all_rows):   # 1开始是为了去除菜名
+    for k in range(1,all_col):  # 1开始是为了去除时间
+        data.append(sheet1.cell(i,k).value)
+
+
+
+## 斯皮尔慢相关系数 输入为两个列表 输出为数值型
+def spearman(lst1,lst2):
+    n = len(lst1)
+    num = 0     #分子
+    for i in range(n):
+        num = num + ((lst1[i] - lst2[i]) ** 2)
+    value = 1 - ((6 * num) / (n * ((n * n) - 1)))
+    return value
+
+
+##双重循环判断各个菜系的spearman相关系数
+for a in label:
+    lst1 = []   #每次a循环后给lst1清空 否则会遗留上次循环的数据
+    for i in range(label.index(a), len(data), len(label)):   #循环找到data里a的销售数据
+        if data[i] == &quot;&quot;:     #缺失值赋空值
+            data[i] = 0
+        lst1.append(data[i])   #a的销售数据的列表
+    for b in label:
+        lst2 = []
+        for i in range(label.index(b), len(data), len(label)): #循环找到data里b的销售数据
+            if data[i] == &quot;&quot;:  #缺失值赋空值
+                data[i] = 0
+            lst2.append(data[i])  #b的销售数据的列表
+        corelation_value = spearman(lst1,lst2)
+        print(a,&#39;与&#39;,b,&#39;spearman的相关系数为:&#39;,corelation_value)
+
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/custom/donate/AliPayQR.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/custom/donate/WeChanQR.jpg"></li>
+              </ul>
             </div>
           </div>
         </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
       </article>
-    </div>
-  </div>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/11/23/TF-IDF/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                TF-IDF</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="guowenbo" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">guowenbo</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>一个好奇的人</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

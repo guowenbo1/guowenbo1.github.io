@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-23T12:23:48.624Z</updated>
+  <updated>2020-11-26T06:30:48.720Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据预处理</title>
+    <link href="/2020/11/26/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
+    <id>/2020/11/26/数据预处理/</id>
+    <published>2020-11-26T06:15:46.000Z</published>
+    <updated>2020-11-26T06:30:48.720Z</updated>
+    
+    <summary type="html">
+    
+      第二次数据挖掘作业
+    
+    </summary>
+    
+      <category term="python" scheme="/categories/python/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>TF-IDF</title>
