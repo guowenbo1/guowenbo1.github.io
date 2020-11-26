@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-26T06:30:48.720Z</updated>
+  <updated>2020-11-26T07:26:14.468Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>逻辑回归</title>
+    <link href="/2020/11/26/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
+    <id>/2020/11/26/逻辑回归/</id>
+    <published>2020-11-26T07:26:14.000Z</published>
+    <updated>2020-11-26T07:26:14.468Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PCA</title>
+    <link href="/2020/11/26/PCA/"/>
+    <id>/2020/11/26/PCA/</id>
+    <published>2020-11-26T06:54:29.000Z</published>
+    <updated>2020-11-26T07:14:40.309Z</updated>
+    
+    <summary type="html">
+    
+      对于2600 * 590 的矩阵进行主成分分析降维。
+    
+    </summary>
+    
+      <category term="python" scheme="/categories/python/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>数据预处理</title>
@@ -124,7 +158,7 @@ hexo n
     <link href="/2020/11/21/hello-world/"/>
     <id>/2020/11/21/hello-world/</id>
     <published>2020-11-21T08:24:30.739Z</published>
-    <updated>2020-11-21T08:24:30.739Z</updated>
+    <updated>2020-11-26T07:28:34.899Z</updated>
     
     <summary type="html">
     
