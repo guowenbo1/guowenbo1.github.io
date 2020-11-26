@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-26T14:10:34.052Z</updated>
+  <updated>2020-11-26T14:50:19.291Z</updated>
   <id>/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="/2020/11/26/Jsdelivr%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>/2020/11/26/Jsdelivr的使用/</id>
     <published>2020-11-26T12:54:54.000Z</published>
-    <updated>2020-11-26T14:10:34.052Z</updated>
+    <updated>2020-11-26T14:50:19.291Z</updated>
     
     <summary type="html">
     
@@ -39,7 +39,7 @@
     <link href="/2020/11/26/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
     <id>/2020/11/26/逻辑回归/</id>
     <published>2020-11-26T07:26:14.000Z</published>
-    <updated>2020-11-26T14:22:27.711Z</updated>
+    <updated>2020-11-26T14:50:01.988Z</updated>
     
     <summary type="html">
     
@@ -55,17 +55,11 @@
     <link href="/2020/11/26/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
     <id>/2020/11/26/线性回归/</id>
     <published>2020-11-26T07:15:13.000Z</published>
-    <updated>2020-11-26T14:44:15.654Z</updated>
+    <updated>2020-11-26T14:51:17.441Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;In this part of this exercise, you will implement linear regression with one variable to predict profits for a food truck. Suppose you
-        
-      
+      多元梯度下降算法
     
     </summary>
     
@@ -97,7 +91,7 @@
     <link href="/2020/11/26/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
     <id>/2020/11/26/数据预处理/</id>
     <published>2020-11-26T06:15:46.000Z</published>
-    <updated>2020-11-26T14:23:01.437Z</updated>
+    <updated>2020-11-26T14:49:01.706Z</updated>
     
     <summary type="html">
     
@@ -115,7 +109,7 @@
     <link href="/2020/11/23/TF-IDF/"/>
     <id>/2020/11/23/TF-IDF/</id>
     <published>2020-11-23T12:12:29.000Z</published>
-    <updated>2020-11-26T14:22:46.616Z</updated>
+    <updated>2020-11-26T14:49:16.386Z</updated>
     
     <summary type="html">
     
