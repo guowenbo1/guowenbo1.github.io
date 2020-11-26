@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-26T13:01:44.797Z</updated>
+  <updated>2020-11-26T14:10:34.052Z</updated>
   <id>/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="/2020/11/26/Jsdelivr%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>/2020/11/26/Jsdelivr的使用/</id>
     <published>2020-11-26T12:54:54.000Z</published>
-    <updated>2020-11-26T13:01:44.797Z</updated>
+    <updated>2020-11-26T14:10:34.052Z</updated>
     
     <summary type="html">
     
@@ -39,13 +39,13 @@
     <link href="/2020/11/26/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
     <id>/2020/11/26/逻辑回归/</id>
     <published>2020-11-26T07:26:14.000Z</published>
-    <updated>2020-11-26T07:26:14.468Z</updated>
+    <updated>2020-11-26T14:22:27.711Z</updated>
     
     <summary type="html">
     
     </summary>
     
-      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="python" scheme="/categories/python/"/>
     
     
   </entry>
@@ -55,11 +55,11 @@
     <link href="/2020/11/26/PCA/"/>
     <id>/2020/11/26/PCA/</id>
     <published>2020-11-26T06:54:29.000Z</published>
-    <updated>2020-11-26T07:14:40.309Z</updated>
+    <updated>2020-11-26T14:22:39.539Z</updated>
     
     <summary type="html">
     
-      对于2600 * 590 的矩阵进行主成分分析降维。
+      对于2600 * 590 的矩阵进行主成分分析降维，第三次数据挖掘作业
     
     </summary>
     
@@ -73,7 +73,7 @@
     <link href="/2020/11/26/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
     <id>/2020/11/26/数据预处理/</id>
     <published>2020-11-26T06:15:46.000Z</published>
-    <updated>2020-11-26T06:30:48.720Z</updated>
+    <updated>2020-11-26T14:23:01.437Z</updated>
     
     <summary type="html">
     
@@ -91,7 +91,7 @@
     <link href="/2020/11/23/TF-IDF/"/>
     <id>/2020/11/23/TF-IDF/</id>
     <published>2020-11-23T12:12:29.000Z</published>
-    <updated>2020-11-23T12:23:48.624Z</updated>
+    <updated>2020-11-26T14:22:46.616Z</updated>
     
     <summary type="html">
     
@@ -99,7 +99,7 @@
     
     </summary>
     
-      <category term="数据挖掘" scheme="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+      <category term="python" scheme="/categories/python/"/>
     
     
   </entry>

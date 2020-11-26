@@ -413,14 +413,12 @@
           </header>
         
         <div class="entry-content">
-          <h3 id="Jsdelivr"><a href="#Jsdelivr" class="headerlink" title="Jsdelivr"></a>Jsdelivr</h3><p>// add / at the end to get a directory listing</p>
-<blockquote>
-<p><a href="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/</a></p>
-</blockquote>
-<p>// 在原先的url中，将“<a href="https://cdn.jsdelivr.net/…”" target="_blank" rel="noopener">https://cdn.jsdelivr.net/…”</a> 替换为 “<a href="https://purge.jsdelivr.net/…”" target="_blank" rel="noopener">https://purge.jsdelivr.net/…”</a> 即可刷新</p>
-<blockquote>
-<p><a href="https://purge.jsdelivr.net/gh/guowenbo1/cdn@main/" target="_blank" rel="noopener">https://purge.jsdelivr.net/gh/guowenbo1/cdn@main/</a></p>
-</blockquote>
+          <h3 id="Jsdelivr"><a href="#Jsdelivr" class="headerlink" title="Jsdelivr"></a>Jsdelivr</h3><pre><code class="python"># add / at the end to get a directory listing
+&gt; https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/
+
+# 在原先的url中，将“https://cdn.jsdelivr.net/…” 替换为 “https://purge.jsdelivr.net/…” 即可刷新
+&gt; https://purge.jsdelivr.net/gh/guowenbo1/cdn@main/
+</code></pre>
 <h3 id="Git-基本操作"><a href="#Git-基本操作" class="headerlink" title="Git 基本操作"></a>Git 基本操作</h3><pre><code class="python">git status  # 查看工作区代码相对于暂存区的差别
 git add .  # 将当前目录下修改的所有代码从工作区添加到暂存区 . 代表当前目录
 git commit -m  # ‘注释’ 将缓存区内容添加到本地仓库
