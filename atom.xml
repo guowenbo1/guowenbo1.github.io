@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-26T14:50:19.291Z</updated>
+  <updated>2020-11-30T14:04:11.553Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KNN</title>
+    <link href="/2020/11/30/KNN/"/>
+    <id>/2020/11/30/KNN/</id>
+    <published>2020-11-30T14:03:09.000Z</published>
+    <updated>2020-11-30T14:04:11.553Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;数据集：Iris也称鸢尾花卉数据集，是一类多重变量分析的数据集。该数据集是4个最流行的机器学习数据集之一。通过花萼长度，花萼宽度，花瓣长度，花瓣宽度4个属性预测鸢尾花卉属于（Setosa，Versicolour，Virginica）三个种类中的哪一类。&lt;/p&gt;
+&lt;p&gt;实验要
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="/categories/python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>NdArray</title>
+    <link href="/2020/11/29/nddarray/"/>
+    <id>/2020/11/29/nddarray/</id>
+    <published>2020-11-29T05:52:05.000Z</published>
+    <updated>2020-11-30T13:01:49.921Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;pre&gt;&lt;code class=&quot;python&quot;&gt;#NpArray的声明
+a = np.array([2,3,4],[5,6,7]) #最简单的声明
+d = np.array([[1,2],[3,4]],dtype=complex)
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Jsdelivr的使用</title>
