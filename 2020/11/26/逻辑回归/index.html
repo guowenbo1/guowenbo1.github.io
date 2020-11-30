@@ -407,12 +407,12 @@
       逻辑回归</h1>
       <p class="entry-census">
         <span>
-          <a href="hojun.cn">
+          <a href="">
             <img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg">
           </a>
         </span>
         <span>
-          <a href="hojun.cn">hojun</a>
+          <a href="">Eric Guo</a>
         </span>
         <span class="bull">
         ·</span>
@@ -430,7 +430,133 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          
+          <p>利用logistic回归，对数据ex2data1.txt分类。<br>要求：</p>
+<ul>
+<li><p>对数据ex2data1.txt的第一列补1；</p>
+</li>
+<li><p>数据做归一化处理；</p>
+</li>
+<li><p>采用梯度下降法，求解拟合logistic函数的最优参数；</p>
+</li>
+<li><p>对ex2data1.txt数据进行分类，计算分类精度；</p>
+</li>
+<li><p>调整步长和迭代次数，找出最优拟合边界；</p>
+</li>
+<li><p>画出决策边界，画出迭代次数和代价函数的关系；</p>
+</li>
+</ul>
+<pre><code class="PYTHON">import numpy as np
+from numpy import genfromtxt
+from sklearn import preprocessing
+import math
+import matplotlib.pyplot as plt
+
+#这里的补1应为再加一列数值为1的数据
+#数据第一列补1； 错误 
+def add1tofirstcolumn(nparray):
+    firstColumn = nparray[:,0]
+    firstColumn = firstColumn + 100
+    nparray[:,0] = firstColumn
+    return nparray
+
+
+#除数据最后一列 其他归一化处理
+def datascale(nparray):
+    data = nparray[:,0:-1]
+    normaliztoin = preprocessing.scale(data)
+    nparray[:,0:-1] = normaliztoin
+    return(nparray)
+
+
+#特征线性求和为z
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+
+
+# theat参数 xarray自变量 yarray因变量
+def jtheat(theat0, theat1, theat2, xarray, yarray):
+    sum = 0
+    m = len(xarray)
+    for i in range(m):
+        sigz = sigmoid(theat0 + theat1 * xarray[i, 0] + theat2 * xarray[i, 1])
+        sum += yarray[i] * math.log(sigz) + (1 - yarray[i]) * math.log(sigz)
+    value = (sum / m) * -1
+    return round(value,10)
+
+
+# 梯度下降算法迭代更新theat0和theat1z和theat2
+def gradient_descent(theat0 ,theat1 ,theat2,alpha ,xarray ,yarray):
+    m = len(xarray)
+    sum0 = 0
+    sum1 = 0
+    sum2 = 0
+    for i in range(m):
+        sigz = sigmoid(theat0 + theat1 * xarray[i, 0] + theat2 * xarray[i, 1])
+        sum0 += sigz - yarray[i]
+        sum1 += (sigz- yarray[i]) * xarray[i,0]
+        sum2 += (sigz - yarray[i]) * xarray[i, 1]
+    theat0 = theat0 - alpha * sum0 / m
+    theat1 = theat1 - alpha * sum1 / m
+    theat2 = theat2 - alpha * sum2 / m
+    return round(theat0 ,10) ,round(theat1 ,10),round(theat2 ,10)
+
+
+if __name__ == &quot;__main__&quot;:
+    dataPath = &#39;ex2data1.txt&#39;
+    dataSet = genfromtxt(dataPath, delimiter=&#39;,&#39;)
+    dataSet = add1tofirstcolumn(dataSet) #对数据第一列补1
+    dataSet = datascale(dataSet)  #对数据归一化处理
+    label = dataSet[:,-1]
+    data = dataSet[:,0:-1]
+
+    theat0 = 0  # 第一个参数
+    theat1 = 0  # 第二个参数
+    theat2 = 0
+    alpha = 0.01  # 学习率
+    epslion = 0.0001  # 最小误差值 当两次迭代的MSE小于此值时停止迭代
+    error0 = 0
+    count = 0
+    error = []
+    while True:
+        count += 1
+        theat0 ,theat1,theat2 = gradient_descent(theat0,theat1,theat2,alpha,data,label)
+        error1 = jtheat(theat0, theat1, theat2, data, label) #计算迭代的误差
+        error.append(error1)
+        if abs(error1 - error0) &lt;=epslion:
+            break
+        else:
+            error0 = error1
+
+    print(&quot;theat0 is&quot; ,theat0 ,&quot; theat1 is&quot; ,theat1, &quot;theat2 is&quot;,theat2)
+    print(&quot;迭代次数为&quot; ,count)
+
+    ## visualizing the data
+    # 绘制散点图 参数：x横轴 y纵轴
+
+    for i in range(len(dataSet[:,-1])):
+        if dataSet[i,-1]==1:  #label为1时
+            plt.scatter(dataSet[i:,0], dataSet[i:,1],c=&quot;red&quot;, marker=&#39;s&#39;)
+        else:  #label为0时
+            plt.scatter(dataSet[i:, 0], dataSet[i:, 1], c=&quot;green&quot;, marker=&#39;s&#39;)
+
+    # 绘制x轴和y轴坐标
+    plt.xlabel(&quot;x1&quot;)
+    plt.ylabel(&quot;x2&quot;)
+
+    #决策边界 #theat0 + theat1x1 + theat2x2 = 0 假设x1已知 算出x2
+    x2 = -((dataSet[:,0] * theat1) + theat0) / theat2 #theat0 +
+    plt.plot(dataSet[:,0],x2, &#39;r-&#39;, label = &quot;decision merge&quot;)
+
+    # 显示图形
+    plt.show()
+
+    plt.plot(error) #x值缺省时默认为len(error)
+    plt.ylabel(&#39;Cost J&#39;)
+    plt.xlabel(&#39;Iterations&#39;)
+    plt.show()
+
+</code></pre>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -511,11 +637,11 @@
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="hojun.cn" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="hojun" height="70" width="70"></a>
+          <a href="" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="Eric Guo" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="hojun.cn" itemprop="url" rel="author">hojun</a>
+            <a href="" itemprop="url" rel="author">Eric Guo</a>
             </h3>
           </div>
         </div>
