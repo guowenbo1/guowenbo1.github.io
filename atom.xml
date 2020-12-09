@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-30T14:47:42.945Z</updated>
+  <updated>2020-11-26T14:50:19.291Z</updated>
   <id>/</id>
   
   <author>
@@ -15,24 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>KNN</title>
-    <link href="/2020/11/30/KNN/"/>
-    <id>/2020/11/30/KNN/</id>
-    <published>2020-11-30T14:03:09.000Z</published>
-    <updated>2020-11-30T14:47:42.945Z</updated>
-    
-    <summary type="html">
-    
-      数据挖掘第六次作业，对鸢尾花数据进行KNN的实现
-    
-    </summary>
-    
-      <category term="python" scheme="/categories/python/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>Jsdelivr的使用</title>
