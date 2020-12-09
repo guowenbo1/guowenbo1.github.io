@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-11-26T14:50:19.291Z</updated>
+  <updated>2020-12-09T05:55:49.940Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于不同算法计算距离的KNN</title>
+    <link href="/2020/12/09/%E5%9F%BA%E4%BA%8E%E4%B8%8D%E5%90%8C%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9A%84KNN/"/>
+    <id>/2020/12/09/基于不同算法计算距离的KNN/</id>
+    <published>2020-12-09T04:25:58.000Z</published>
+    <updated>2020-12-09T05:55:49.940Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;KNN&quot;&gt;&lt;a href=&quot;#KNN&quot; class=&quot;headerlink&quot; title=&quot;KNN&quot;&gt;&lt;/a&gt;KNN&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;import numpy as np
+from numpy import
+        
+      
+    
+    </summary>
+    
+      <category term="python" scheme="/categories/python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>KNN</title>
+    <link href="/2020/11/30/KNN/"/>
+    <id>/2020/11/30/KNN/</id>
+    <published>2020-11-30T14:03:09.000Z</published>
+    <updated>2020-12-09T05:54:01.528Z</updated>
+    
+    <summary type="html">
+    
+      数据挖掘第六次作业，对鸢尾花数据进行KNN的实现
+    
+    </summary>
+    
+      <category term="python" scheme="/categories/python/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>NdArray</title>
+    <link href="/2020/11/29/nddarray/"/>
+    <id>/2020/11/29/nddarray/</id>
+    <published>2020-11-29T05:52:05.000Z</published>
+    <updated>2020-12-09T05:56:45.173Z</updated>
+    
+    <summary type="html">
+    
+      在学习python过程中对NdArray这一数据类型的使用笔记
+    
+    </summary>
+    
+      <category term="技术" scheme="/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Jsdelivr的使用</title>
