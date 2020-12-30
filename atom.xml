@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-12-19T13:25:27.134Z</updated>
+  <updated>2020-12-30T04:01:02.290Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据挖掘-航空公司实例</title>
+    <link href="/2020/12/30/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E8%88%AA%E7%A9%BA%E5%85%AC%E5%8F%B8%E5%AE%9E%E4%BE%8B/"/>
+    <id>/2020/12/30/数据挖掘-航空公司实例/</id>
+    <published>2020-12-30T03:38:17.000Z</published>
+    <updated>2020-12-30T04:01:02.290Z</updated>
+    
+    <summary type="html">
+    
+      数据挖掘最后一次作业
+    
+    </summary>
+    
+      <category term="python" scheme="/categories/python/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>r语言基础</title>
