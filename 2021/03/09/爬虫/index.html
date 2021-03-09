@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">KNN | guowenbo1</title>
+  <title itemprop="name">爬虫 | guowenbo1</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -400,23 +400,23 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/cover/5.jpg);" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/cover/5.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/banner/client.jpg);" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/banner/client.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      KNN</h1>
+      爬虫</h1>
       <p class="entry-census">
         <span>
-          <a href="">
+          <a href="hojun.cn">
             <img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg">
           </a>
         </span>
         <span>
-          <a href="">Eric Guo</a>
+          <a href="hojun.cn">Eric Guo</a>
         </span>
         <span class="bull">
         ·</span>
-        2020-11-30<span class="bull">
+        2021-3-9<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -430,343 +430,182 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h3 id="KNN"><a href="#KNN" class="headerlink" title="KNN"></a>KNN</h3><p>数据集：Iris也称鸢尾花卉数据集，是一类多重变量分析的数据集。该数据集是4个最流行的机器学习数据集之一。通过花萼长度，花萼宽度，花瓣长度，花瓣宽度4个属性预测鸢尾花卉属于（Setosa，Versicolour，Virginica）三个种类中的哪一类。</p>
-<p>实验要求：</p>
-<p>1、     读入Iris.csv数据，并将数据的70%做为训练数据，30%做为测试数据；</p>
-<p>2、     根据KNN算法思想，实现KNN算法，并使用训练数据训练KNN分类模型；</p>
-<p>3、     使用剩余30%数据对KNN分类模型进行测试，并计算出分类精度。（可考虑使用可视化界面进行分类效果分析）</p>
-<p>4、     可以直接用sklearn库中的neighbors.KNeighborsClassifier()</p>
-<pre><code class="PYTHON">import matplotlib.pyplot as plt
-import numpy as np
-from numpy import genfromtxt
-from sklearn.metrics import confusion_matrix
-
-# knn的实现
-# trainData为训练集；testData为检验集（不知道标签的集）；labels为训练集的标签；k为要计算欧氏距离的元素的个数
-def knn(trainData, testData, labels, k):
-    # 计算训练样本的行数
-    row = trainData.shape[0]
-
-    # 计算训练样本和测试样本的差值
-    diff = np.tile(testData, (row, 1)) - trainData
-    #np.tile(testData, (rowSize, 1)) 是将 testData 这个数据扩展为 rowSize 列，这样能避免运算错误；
-
-    # 计算差值的平方和
-    sqrDiff = diff ** 2
-    sqrDiffSum = sqrDiff.sum(axis=1)  #求和
-
-    # 计算距离（欧式距离）
-    distances = sqrDiffSum ** 0.5
-
-    # 对所得的距离从低到高进行排序
-    sortDistance = distances.argsort()  #argsort函数返回的是数组值从小到大的索引值;返还值类型为NdArray
-    #例：若argsort返还值为[91,72,79]意思为distance[91]最小（最近），其次是distanc[72】,之后是distance[79]
-    #值越小意味着越近
-
-    # print(&#39;sotdistance is&#39;,sortDistance)
-    # print(&#39;sortdistance[0] is&#39;,sortDistance[0])
-
-    #字典：键为标签名，值为此标签名出现的次数
-    count = {}
-    for i in range(k):
-        vote = labels[sortDistance[i]] #前三个最小的距离的索引值；labels和distance的相同的索引值代表着相同的数据
-        count[vote] = count.get(vote, 0) + 1  #dic.get()返还指定键的值
-
-    # 对类别出现的频数从高到低进行排序
-    sortCount = sorted(count.items(), key=lambda d:d[1], reverse=True)
-    #sorted(count.items(), key=lambda d:d[1], reverse=True) 排序函数，里面的参数 key=lambda d:d[1],
-    #reverse=True 表示按照 count 这个字典的值（value）从高到低排序，
-    #如果把 1 换成 0，则是按字典的键（key）从高到低排序。把 True 换成 False 则是从低到高排序。
-
-    # 返回出现频数最高的类别
-    return sortCount[0][0]
+          <p>基于ad病数据，利用python对ncbi查询网站进行爬虫，爬虫输出为搜索结果的数量。</p>
+<pre><code class="python">import requests
+from bs4 import BeautifulSoup
+import xlwt
+import pandas as pd
 
 
-#把数据集分成训练和检验两个样本；dataset为要分割的数据集，count为训练集的百分比
-def DataSplit(data,count):
-    dataCount = data.shape[0] - 1  # 数据的行数; -1是为了把第一行的属性减去
-    testCount = round(dataCount * count)  # 要设置的训练集的行数
+def ResultNFKB(gene):
+    string = gene + &#39; &#39; + &#39;NF-&#39;
 
-    # 分割测试和检验数据集
-    dataTest = data[0:testCount:]  # 训练数据集的x值
-    dataVerify = data[testCount:]  # 检验数据集的x值
+    param = {
+        &#39;term&#39;:string,
+    }
+    url = requests.get(url=&#39;https://pubmed.ncbi.nlm.nih.gov/&#39;,params=param)
 
-    return dataTest,dataVerify
+    demo = url.text
+
+    soup = BeautifulSoup(demo,&#39;lxml&#39;)
+
+    result = soup.select(&#39;.results-amount .value&#39;)
+
+    if result:
+        for i in result:
+            return int(i.get_text())
+
+    #只有一个结果的搜索返回界面不一样
+    elif soup.select(&#39;.single-result-redirect-message&#39;):
+        return 1
+    else:
+        return 0
 
 
-#计算准确度；输入为两个标签，计算差异度
-def CalAccuracy(x,y):
-    correctCount = 0
-    for i in range(x.shape[0]):
-        if y[i] == x[i]:
-            correctCount += 1
-    accuracy = correctCount / x.shape[0]
-    return accuracy
+
+def ResultTAU(gene):
+    string = gene + &#39; &#39; + &#39;TAU&#39;
+
+    param = {
+        &#39;term&#39;:string,
+    }
+    url = requests.get(url=&#39;https://pubmed.ncbi.nlm.nih.gov/&#39;,params=param)
+
+    demo = url.text
+
+    soup = BeautifulSoup(demo,&#39;lxml&#39;) #用xml方式解码
+
+    result = soup.select(&#39;.results-amount .value&#39;) #results-amount 类别下的value类别的值即 查询的数量
+
+    if result:
+        for i in result:
+            return int(i.get_text())
+
+    # 只有一个结果的搜索返回界面不一样
+    elif soup.select(&#39;.single-result-redirect-message&#39;):
+        return 1
+    else:
+        return 0
 
 
-# #混淆矩阵的构建
-def CmPlot(trainLabel,testLabel):
+def ResultUBI(gene):
+    string = gene + &#39; &#39; + &#39;UBIQUITIN&#39;
 
-    #confusion_matrix输入真实和预测的标签列表，返还个矩阵
-    cm = confusion_matrix(trainLabel,testLabel)
+    param = {
+        &#39;term&#39;:string,
+    }
+    url = requests.get(url=&#39;https://pubmed.ncbi.nlm.nih.gov/&#39;,params=param)
 
-    #matshow函数绘制成矩阵图像
-    plt.matshow(cm, cmap=plt.cm.Greens)
+    demo = url.text
 
-    #colorbar添加渐变色条
-    plt.colorbar()
+    soup = BeautifulSoup(demo,&#39;lxml&#39;) #用xml方式解码
 
-    #矩阵上显示数字
-    for x in range(len(cm)):
-        for y in range(len(cm)):
-            plt.annotate(cm[x, y], xy=(
-                x, y), horizontalalignment=&#39;center&#39;, verticalalignment=&#39;center&#39;)
+    result = soup.select(&#39;.results-amount .value&#39;) #results-amount 类别下的value类别的值即 查询的数量
 
-    #中文显示不出来
-    plt.ylabel(&#39;true&#39;)
-    plt.xlabel(&#39;predict&#39;)
+    if result:
+        for i in result:
+            return int(i.get_text())
 
-    return plt
+    # 只有一个结果的搜索返回界面不一样
+    elif soup.select(&#39;.single-result-redirect-message&#39;):
+        return 1
+    else:
+        return 0
 
+
+#输入一个芯片名，返回该基因名
+def GeneName(microName):
+
+    string = microName
+
+    param = {
+        &#39;term&#39;:string,
+    }
+
+    url = requests.get(url=&#39;https://www.ncbi.nlm.nih.gov/geoprofiles/&#39;, params=param)
+
+    demo = url.text
+
+    soup = BeautifulSoup(demo, &#39;lxml&#39;)  # 用xml方式解码
+
+    result = soup.select(&#39;.rsltcont .title&#39;)  # results-amount 类别下的value类别的值即 查询的数量
+
+    for i in result:
+        i = i.get_text().split(&#39;-&#39;)
+        return i[0]
+
+
+#基因名转换为微阵列芯片名 geneList为包含基因名的列表
+def MicroName(geneList):
+    path = &#39;valueGeneName.xlsx&#39;
+    data = pd.read_excel(path)
+    list = []
+
+    for i in geneList:
+        name = data.loc[data[&#39;ID_REF&#39;].isin([i])]
+        name = name.iloc[:, 1:].values
+        name = name.tolist()
+        list.append(name[0])
+
+    return list
 
 if __name__ == &#39;__main__&#39;:
-    dataPath = &#39;iris1.csv&#39;
-    dataSet = genfromtxt(dataPath, delimiter=&#39;,&#39;,dtype=None,encoding=&#39;utf-8&#39;)
-    label = dataSet[1:,-1]   #最后一行的数据 即标签列
-    data = dataSet[1:,0:-1]  #除了标签列的数据
-    trainData,testData = DataSplit(data,0.7)    #以70%为界限去分割训练集和数据集
-    trainData = trainData.astype(np.float)      #将非label标签的数据转换成float类型，方便后续欧氏距离计算
-    testData = testData.astype(np.float)
-    trainLabel,testLabel = DataSplit(label,0.7)
 
-    y = [] #y存储根据根据knn模型所得到测试集数据的分类 的列表
-    for i in testData:
-        value = knn(trainData,i,trainLabel,3)
-        y.append(value)
-    y = np.array(y)
+    geneList1 = [&#39;RAB14&#39;,&#39;TBL1X&#39;,&#39;YES1&#39;,&#39;CTNNBL1&#39;,&#39;PIGR&#39;,&#39;PTPRF&#39;,&#39;LTB4R&#39;,&#39;IL9R&#39;,&#39;PLD2&#39;,&#39;DLGAP2&#39;,&#39;PAX3&#39;,&#39;TRIM24&#39;,&#39;DBC1&#39;,&#39;AVPR2&#39;,&#39;ZDHHC17&#39;,\
+                &#39;ERF&#39;,&#39;BLZF1&#39;,&#39;TFDP1&#39;,&#39;BAG2&#39;,&#39;TNFRSF25&#39;,&#39;B4GALT6&#39;,&#39;COL4A1&#39;,&#39;EPS15&#39;,&#39;NRXN1&#39;,&#39;PCDH11X&#39;,&#39;STX1A&#39;,&#39;TAC1&#39;,&#39;DPYSL4&#39;,&#39;KCNIP1&#39;,&#39;N2F5&#39;]
 
-    #计算准确度
-    accuracy = CalAccuracy(y,testLabel)
-    print(&#39;分类精度为&#39;,accuracy)
-
-    #混淆矩阵的对角线区域为TP(true positive);及预测结果与真实值一致的区域
-    CmPlot(testLabel,y).show()
-</code></pre>
-<p><a href="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/post/python/数据挖掘/实验6-KNN/6.png" target="_blank" rel="noopener">6.png (911×895) (jsdelivr.net)</a></p>
-<p>实验：基于不同的算法算欧氏距离去实现KNN</p>
-<pre><code class="PYTHON">import numpy as np
-from numpy import genfromtxt
-import time
-
-#利用np里的linalg去计算二范数（欧氏距离）
-#返还矩阵的下标i，k即为第I个元素与第K个元素的欧氏距离
-def disNorm(dataSet):
-    disMatrix = np.zeros([len(dataSet),len(dataSet)]) #生成0矩阵
-    for k in range(len(dataSet)):
-        for j in range(len(dataSet)):
-            # if j != k:
-            if j &gt; k:
-                distance = np.linalg.norm(dataSet[k] - dataSet[j])
-                # print(&#39;数据里的第(%d)个元素与第(%d)个元素的欧氏距离为（%f)&#39; % (k,j,distance))
-                disMatrix[k][j] = distance
-    return disMatrix
+    geneList = [&#39;RAB14&#39;,&#39;TBL1X&#39;,&#39;YES1&#39;,&#39;CTNNBL1&#39;,&#39;PIGR&#39;,&#39;PTPRF&#39;,&#39;LTB4R&#39;,&#39;IL9R&#39;,&#39;PLD2&#39;,&#39;DLGAP2&#39;,&#39;PAX3&#39;,&#39;TRIM24&#39;,&#39;DBC1&#39;,&#39;AVPR2&#39;,&#39;ZDHHC17&#39;,\
+                &#39;ERF&#39;,&#39;BLZF1&#39;,&#39;TFDP1&#39;,&#39;BAG2&#39;,&#39;TNFRSF25&#39;,&#39;B4GALT6&#39;,&#39;COL4A1&#39;,&#39;EPS15&#39;,&#39;NRXN1&#39;,&#39;PCDH11X&#39;,&#39;STX1A&#39;,&#39;TAC1&#39;,&#39;DPYSL4&#39;,&#39;KCNIP1&#39;,&#39;N2F5&#39;]
 
 
-#利用scipy库里的pdist函数去计算欧几里得距离
-#返还矩阵的下标i，k即为第I个元素与第K个元素的欧氏距离
-def disPdist(dataSet):
-    disMatrix = np.zeros([len(dataSet), len(dataSet)])
-    from scipy.spatial.distance import pdist
-    eucDis = pdist(dataSet)  #pdist返还值为ndarray类型
-    sum = 0
-    for k in range(len(dataSet) - 1):
-        for j in range(len(dataSet) - 1):
-            if j &gt;= k:
-                a = sum + (j - k)
-                disMatrix[k][j+1] = eucDis[a] #j+1是因为 eucDis是没有自己和自己的距离，而每行的对角线的那个点是自己对自己的距离
-        sum = sum + len(dataSet) - k -1
-    return disMatrix
+    nfkbDic = {}
+    tauDic = {}
+    ubiquitinDic = {}
+    microName = MicroName(geneList)
+
+    for i in geneList:
+        nfkbDic[i] = ResultNFKB(i)
+        tauDic[i] = ResultTAU(i)
+        ubiquitinDic[i] = ResultUBI(i)
+
+    # #sorted
+    # nfkbDic = sorted(nfkbDic.items(),key=lambda x:x[1],reverse=True)
+    # tauDic = sorted(tauDic.items(), key=lambda x: x[1], reverse=True)
+    # ubiquitinDic = sorted(ubiquitinDic.items(), key=lambda x: x[1], reverse=True)
+
+    #写入xlsx
+    pathwayList=[&#39;ID_REF&#39;,&#39;NF-KB&#39;,&#39;TAU&#39;,&#39;ubiquitin&#39;]
+    workbook = xlwt.Workbook(encoding=&#39;utf-8&#39;)
+    worksheet = workbook.add_sheet(&#39;sheet1&#39;)
+
+    #写入基因名
+    b = 1
+    for i in geneList:
+        worksheet.write(b, 0, i)
+        b = b + 1
+
+    #写入标题栏
+    a = 1
+    for i in pathwayList:
+        worksheet.write(0, a, i)
+        a = a + 1
+
+    #写入数据
+    for j in range(len(geneList)):
+        name = geneList[j]
+        j = j + 1
+        worksheet.write(j,1,microName[j-1]) #写入ID_REF名
+        worksheet.write(j,2,nfkbDic[name])
+        worksheet.write(j, 3, tauDic[name])
+        worksheet.write(j, 4, ubiquitinDic[name])
+
+    workbook.save(&#39;ADgene.xls&#39;)  # 保存文件
+
+    print(&#39;nfkb is&#39;,nfkbDic)
+    print(&#39;TAU IS&#39;,tauDic)
+    print(&#39;ubiquitin IS&#39;, ubiquitinDic)
 
 
-#基于np.norm的KNN
-def knnNorm(trainData, testData,labels,k):
-    trainData = np.vstack((trainData,testData))
-
-    ###基于np。norm
-    trainData = disPdist(trainData)
-
-    ####key重复了
-    # disDic = {} #字典 key是label； value是距离
-    # for i in range(0,len(trainData)-1):
-    #     dis = float(trainData[i:i+1,-1])
-    #     label = labels[i]
-    #     disDic[label] = dis
-
-    distance = np.zeros([len(trainData) - 1, 2], dtype=&#39;O&#39;)  # dtype为float和complex；None 都会出错
-    for i in range(0, len(trainData) - 1):  # 因为多加了个tesddata
-        dis = float(trainData[i:i + 1, -1])
-        label = labels[i]
-        distance[i] = (label, dis)
-
-    # 对所得的距离从低到高进行排序
-    sortDistance = distance[:,-1].argsort()   ####-1去掉
-    #argsort函数返回的是数组值从小到大的索引值;返还值类型为NdArray
-    #例：若argsort返还值为[91,72,79]意思为distance[91]最小（最近），其次是distanc[72】,之后是distance[79]
-    #值越小意味着越近
-
-
-    #字典：键为标签名，值为此标签名出现的次数
-    count = {}
-    for i in range(k): #若k为3 循环为0,1,2
-        vote = labels[sortDistance[i]] #前三个最小的距离的索引值；labels和distance的相同的索引值代表着相同的数据
-        count[vote] = count.get(vote, 0) + 1  #dic.get()返还指定键的值
-
-    # 对类别出现的频数从高到低进行排序
-    sortCount = sorted(count.items(), key=lambda d:d[1], reverse=True)
-    #sorted(count.items(), key=lambda d:d[1], reverse=True) 排序函数，里面的参数 key=lambda d:d[1],
-    #reverse=True 表示按照 count 这个字典的值（value）从高到低排序，
-    #如果把 1 换成 0，则是按字典的键（key）从高到低排序。把 True 换成 False 则是从低到高排序。
-
-    # 返回出现频数最高的类别
-    return sortCount[0][0]
-
-
-#基于Pdist的KNN
-def knnPdist(trainData, testData, labels, k):
-    trainData = np.vstack((trainData, testData))
-
-    ###基于np。norm
-    trainData = disPdist(trainData)
-
-    ####key重复了
-    # disDic = {} #字典 key是label； value是距离
-    # for i in range(0,len(trainData)-1):
-    #     dis = float(trainData[i:i+1,-1])
-    #     label = labels[i]
-    #     disDic[label] = dis
-
-    distance = np.zeros([len(trainData) - 1, 2], dtype=&#39;O&#39;)  # dtype为float和complex；None 都会出错
-    for i in range(0, len(trainData) - 1):  # 因为多加了个tesddata
-        dis = float(trainData[i:i + 1, -1])
-        label = labels[i]
-        distance[i] = (label, dis)
-
-    # 对所得的距离从低到高进行排序
-    sortDistance = distance[:, -1].argsort()  ####-1去掉
-    # argsort函数返回的是数组值从小到大的索引值;返还值类型为NdArray
-    # 例：若argsort返还值为[91,72,79]意思为distance[91]最小（最近），其次是distanc[72】,之后是distance[79]
-    # 值越小意味着越近
-
-    # 字典：键为标签名，值为此标签名出现的次数
-    count = {}
-    for i in range(k):  # 若k为3 循环为0,1,2
-        vote = labels[sortDistance[i]]  # 前三个最小的距离的索引值；labels和distance的相同的索引值代表着相同的数据
-        count[vote] = count.get(vote, 0) + 1  # dic.get()返还指定键的值
-
-    # 对类别出现的频数从高到低进行排序
-    sortCount = sorted(count.items(), key=lambda d: d[1], reverse=True)
-    # sorted(count.items(), key=lambda d:d[1], reverse=True) 排序函数，里面的参数 key=lambda d:d[1],
-    # reverse=True 表示按照 count 这个字典的值（value）从高到低排序，
-    # 如果把 1 换成 0，则是按字典的键（key）从高到低排序。把 True 换成 False 则是从低到高排序。
-
-    # 返回出现频数最高的类别
-    return sortCount[0][0]
-
-
-
-# knn的实现
-# trainData为训练集；testData为检验向量（不知道标签的集）；labels为训练集的标签；k为要计算欧氏距离的元素的个数
-def knn(trainData, testData,labels,k):
-
-    ##基于矩阵预算
-    # 计算训练样本的行数
-    row = trainData.shape[0]
-
-    # 计算训练样本和测试样本的差值
-    diff = np.tile(testData, (row, 1)) - trainData
-    #np.tile(testData, (rowSize, 1)) 是将 testData 这个数据扩展为 rowSize 列，这样能避免运算错误；
-
-    # 计算差值的平方和
-    sqrDiff = diff ** 2
-    sqrDiffSum = sqrDiff.sum(axis=1)  #求和 axis=0按列求和 axis=1按行求和
-
-    # 计算距离（欧式距离）
-    distance = sqrDiffSum ** 0.5
-
-    # 对所得的距离从低到高进行排序
-    sortDistance = distance.argsort()   ####-1去掉
-    #argsort函数返回的是数组值从小到大的索引值;返还值类型为NdArray
-    #例：若argsort返还值为[91,72,79]意思为distance[91]最小（最近），其次是distanc[72】,之后是distance[79]
-    #值越小意味着越近
-
-
-    #字典：键为标签名，值为此标签名出现的次数
-    count = {}
-    for i in range(k): #若k为3 循环为0,1,2
-        vote = labels[sortDistance[i]] #前三个最小的距离的索引值；labels和distance的相同的索引值代表着相同的数据
-        count[vote] = count.get(vote, 0) + 1  #dic.get()返还指定键的值
-
-    # 对类别出现的频数从高到低进行排序
-    sortCount = sorted(count.items(), key=lambda d:d[1], reverse=True)
-    #sorted(count.items(), key=lambda d:d[1], reverse=True) 排序函数，里面的参数 key=lambda d:d[1],
-    #reverse=True 表示按照 count 这个字典的值（value）从高到低排序，
-    #如果把 1 换成 0，则是按字典的键（key）从高到低排序。把 True 换成 False 则是从低到高排序。
-
-    # 返回出现频数最高的类别
-    return sortCount[0][0]
-
-
-if __name__ ==&#39;__main__&#39;:
-    dataPath = &#39;iris1All.csv&#39;
-    dataSet = genfromtxt(dataPath,delimiter=&#39;,&#39;, dtype=None,encoding=&#39;utf-8&#39;)
-    print(len(dataSet))
-    trainCount = round(len(dataSet) * 0.7)
-    trainData = dataSet[1:trainCount,0:-1]
-    trainLabel = dataSet[1:trainCount,-1]
-    verifyData = dataSet[trainCount:,0:-1]
-    trainData = trainData.astype(np.float)
-    verifyData = verifyData.astype(np.float)
-
-    start = time.time()
-    # print(disNorm(trainData))
-    end = time.time()
-    print(&#39;disNp.norm的运算时间为&#39;,end-start)
-
-    start = time.time()
-    # print(disPdist(trainData))
-    end = time.time()
-    print(&#39;disPdist的运算时间为&#39;, end - start)
-
-
-    start = time.time()
-    y = [] #y存储根据根据knn模型所得到测试集数据的分类 的列表
-    for i in verifyData:
-        value = knn(trainData,i,trainLabel,3)
-        y.append(value)
-    y = np.array(y)
-    # print(y)
-    end = time.time()
-    print(&#39;KNN基于矩阵运算的运算时间为&#39;, end - start)
-
-    start = time.time()
-    y = [] #y存储根据根据knn模型所得到测试集数据的分类 的列表
-    for i in verifyData:
-        value = knnPdist(trainData,i,trainLabel,3)
-        y.append(value)
-    y = np.array(y)
-    # print(y)
-    end = time.time()
-    print(&#39;KNN基于Pdist的运算时间为&#39;, end - start)
-
-    start = time.time()
-    y = [] #y存储根据根据knn模型所得到测试集数据的分类 的列表
-    for i in verifyData:
-        value = knnNorm(trainData,i,trainLabel,3)
-        y.append(value)
-    y = np.array(y)
-    # print(y)
-    end = time.time()
-    print(&#39;KNN基于np.NORM的运算时间为&#39;, end - start)
 </code></pre>
 
         </div>
@@ -796,36 +635,19 @@ if __name__ ==&#39;__main__&#39;:
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/12/09/基于不同算法计算距离的KNN/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/cover/3.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/cover/3.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                基于不同算法计算距离的KNN</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/11/29/nddarray/" rel="next">
+            <a href="/2020/12/30/数据挖掘-航空公司实例/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/cover/4.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/cover/4.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@1.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/cover/2.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/guowenbo1/cdn@main/img/cover/2.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                NdArray</h3>
+                数据挖掘-航空公司实例</h3>
                 <hr>
               </div>
             </a>
@@ -849,11 +671,11 @@ if __name__ ==&#39;__main__&#39;:
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="Eric Guo" height="70" width="70"></a>
+          <a href="hojun.cn" class="profile gravatar"><img src="https://wx1.sinaimg.cn/large/006bYVyvgy1ftand2qurdj303c03cdfv.jpg" itemprop="image" alt="Eric Guo" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="" itemprop="url" rel="author">Eric Guo</a>
+            <a href="hojun.cn" itemprop="url" rel="author">Eric Guo</a>
             </h3>
           </div>
         </div>
